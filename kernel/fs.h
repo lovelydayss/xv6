@@ -1,6 +1,7 @@
 // On-disk file system format.
 // Both the kernel and user programs use this header file.
 
+#include "kernel/types.h"
 
 #define ROOTINO  1   // root i-number
 #define BSIZE 1024  // block size
@@ -11,6 +12,7 @@
 //
 // mkfs computes the super block and builds an initial file system. The
 // super block describes the disk layout:
+
 struct superblock {
   uint magic;        // Must be FSMAGIC
   uint size;         // Size of file system image (blocks)
@@ -52,6 +54,8 @@ struct dinode {
 
 // Directory is a file containing a sequence of dirent structures.
 #define DIRSIZ 14
+
+typedef unsigned short ushort;
 
 struct dirent {
   ushort inum;
